@@ -19,7 +19,7 @@ export class UserServiceService {
   }
 
   setToken(token:any){
-    localStorage.setItem("token", token);
+    localStorage.setItem("token", token?.token);
     return true;
   }
 
@@ -32,4 +32,10 @@ export class UserServiceService {
       return true;
     }
   }
+
+  logout(){
+    localStorage.removeItem("token");
+    this.router.navigate(["login"]); 
+  }
+
 }

@@ -4,6 +4,7 @@ import { Customer } from '../customer';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { error } from 'console';
+import { UserServiceService } from '../user-service.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
   public editcustomer!: Customer;
   public deletecustomer!: Customer;
 
-  constructor(private customerService:CustomerserviceService) { }
+  constructor(private customerService:CustomerserviceService,private userservice:UserServiceService) { }
 
   ngOnInit(): void {
     this.getCustomer();
@@ -96,5 +97,9 @@ export class HomeComponent implements OnInit {
     }
     container?.appendChild(button)
     button.click();
+  }
+
+  logout(){
+    this.userservice.logout();
   }
 }
