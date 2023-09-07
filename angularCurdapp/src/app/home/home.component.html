@@ -10,7 +10,7 @@
              <a class="nav-link" (click)="onOpenModal(null!, 'add')">Add Employee <span class="sr-only">(current)</span></a>
           </li> -->
           <li class="nav-item active">
-            <a class="nav-link" (click)="onOpenModal(null!, 'add')">Add Customer</a>
+            <a class="nav-link" data-toggle="modal" data-target="#addEmployeeModal">Add Customer</a>
          </li>
          <li style="margin-left: 2rem">
             <button class="btn btn-danger" type="button" (click)="logout()" style="padding: 5px">logout</button>
@@ -40,8 +40,11 @@
           <td>{{ item?.phone }}</td>
           <td>
             <div class="float-right btn-group btn-group-sm">
-              <a (click)="onOpenModal(item, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-              <a (click)="onOpenModal(item, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+              <!-- <a (click)="onOpenModal(item, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a> -->
+              <a (click)="onOpenedit(item)" class="btn btn-primary tooltips" data-toggle="modal" data-target="#updateEmployeeModal" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+
+              <!-- <a (click)="onOpenModal(item, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a> -->
+              <a (click)="onOpendelete(item)" class="btn btn-secondary tooltips" data-toggle="modal" data-target="#deleteEmployeeModal" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
            </div>
           </td>
         </tr>

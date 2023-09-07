@@ -36,7 +36,6 @@ export class HomeComponent implements OnInit {
    }
 
    public onAddEmloyee(addForm: NgForm): void {
-    document.getElementById("add-employee-form")!.click();
     this.customerService.addcustomer(addForm.value).subscribe( 
       (response: Customer) => {
         console.log(response);
@@ -64,6 +63,12 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  onOpenedit(customer:Customer){
+    this.editcustomer = customer;
+  }
+
+  
+
   public ondeleteEmloyee(Id: number): void {
     this.customerService.deletecustomer(Id).subscribe(
       (response: void) => {
@@ -77,26 +82,9 @@ export class HomeComponent implements OnInit {
       }
     );
   }
- 
-  public onOpenModal(customer: Customer, mode: string): void {
-    const container = document.getElementById('main-container');
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.style.display = 'none';
-    button.setAttribute('data-toggle', 'modal');
-    if (mode === 'add') {
-      button.setAttribute('data-target', '#addEmployeeModal');
-    }
-    if (mode === 'edit') {
-      this.editcustomer = customer; 
-      button.setAttribute('data-target', '#updateEmployeeModal');
-    }
-    if (mode === 'delete') {
-       this.deletecustomer = customer
-      button.setAttribute('data-target', '#deleteEmployeeModal');
-    }
-    container?.appendChild(button)
-    button.click();
+
+  onOpendelete(customer:Customer){
+    this.deletecustomer = customer;
   }
 
   logout(){
